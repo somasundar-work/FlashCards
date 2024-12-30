@@ -15,16 +15,18 @@
   },
   "search.exclude": {
     "**/bin": true,
-    "**/node_modules": true,
     "**/obj": true
   },
   "workbench.colorTheme": "GitHub Dark Default",
   "workbench.iconTheme": "material-icon-theme",
+  "[csharp]": {
+    "editor.defaultFormatter": "csharpier.csharpier-vscode"
+  },
   "git.autofetch": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "terminal.integrated.cwd": "${workspaceFolder}",
   "terminal.integrated.env.windows": {
-    "PATH": "${env:USERPROFILE}\\AppData\\Roaming\\npm;${env:PATH}"
+    "PATH": "${env:USERPROFILE}\\AppData\\Roaming\\npm;${env:PATH};${workspaceFolder}\\stripe"
   },
   "editor.linkedEditing": true,
   "scss.lint.unknownAtRules": "ignore",
