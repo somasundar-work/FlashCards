@@ -1,0 +1,11 @@
+{
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=827846
+  "recommendations": [
+    "angular.ng-template",
+    "aaron-bond.better-comments",
+    "esbenp.prettier-vscode",
+    "PKief.material-icon-theme",
+    "bradlc.vscode-tailwindcss",
+    "formulahendry.auto-rename-tag"
+  ]
+}
