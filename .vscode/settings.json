@@ -17,7 +17,7 @@
     "**/bin": true,
     "**/obj": true
   },
-  "workbench.colorTheme": "GitHub Dark Default",
+  "workbench.colorTheme": "Default Dark Modern",
   "workbench.iconTheme": "material-icon-theme",
   "[csharp]": {
     "editor.defaultFormatter": "csharpier.csharpier-vscode"
