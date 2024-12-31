@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace FlashCards.Models
 {
@@ -11,8 +6,6 @@ namespace FlashCards.Models
     {
         [Key]
         public Guid FlashCardId { get; set; }
-
-        public Guid DeckId { get; set; }
 
         public required string Question { get; set; }
 
@@ -22,10 +15,10 @@ namespace FlashCards.Models
 
         public int Interval { get; set; }  // Spaced repetition interval
 
-        public int EaseFactor { get; set; }  // Difficulty factor for SRS
+        public RatingStatus EaseFactor { get; set; }  // Difficulty factor for SRS
 
         public bool IsDeleted { get; set; }
 
-        public ICollection<Review> Reviews { get; set; }
+        public ICollection<Review> Reviews { get; set; } = [];
     }
 }
