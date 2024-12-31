@@ -57,7 +57,7 @@ namespace FlashCards.Context.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid?>("DeckId")
+                    b.Property<Guid>("DeckId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("EaseFactor")
@@ -93,7 +93,7 @@ namespace FlashCards.Context.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid?>("FlashCardId")
+                    b.Property<Guid>("FlashCardId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<bool>("IsDeleted")
@@ -121,7 +121,8 @@ namespace FlashCards.Context.Migrations
                     b.HasOne("FlashCards.Models.Deck", null)
                         .WithMany("Flashcards")
                         .HasForeignKey("DeckId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("FlashCards.Models.Review", b =>
@@ -129,7 +130,8 @@ namespace FlashCards.Context.Migrations
                     b.HasOne("FlashCards.Models.FlashCard", null)
                         .WithMany("Reviews")
                         .HasForeignKey("FlashCardId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("FlashCards.Models.Deck", b =>
