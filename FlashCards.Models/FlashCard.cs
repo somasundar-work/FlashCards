@@ -4,9 +4,6 @@ namespace FlashCards.Models
 {
     public class FlashCard: BaseEntity
     {
-        [Key]
-        public Guid FlashCardId { get; set; }
-
         public required string Question { get; set; }
 
         public required string Answer { get; set; }

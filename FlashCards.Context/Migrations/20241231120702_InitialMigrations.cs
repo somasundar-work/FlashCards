@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace FlashCards.Context.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialMigration : Migration
+    public partial class InitialMigrations : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -15,36 +15,39 @@ namespace FlashCards.Context.Migrations
                 name: "Decks",
                 columns: table => new
                 {
-                    DeckId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     DeckName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
+                    LastUpdated = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Decks", x => x.DeckId);
+                    table.PrimaryKey("PK_Decks", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
                 name: "FlashCards",
                 columns: table => new
                 {
-                    FlashCardId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Question = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Answer = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     LastReviewed = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Interval = table.Column<int>(type: "int", nullable: false),
                     EaseFactor = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    DeckId = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                    DeckId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    LastUpdated = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_FlashCards", x => x.FlashCardId);
+                    table.PrimaryKey("PK_FlashCards", x => x.Id);
                     table.ForeignKey(
                         name: "FK_FlashCards_Decks_DeckId",
                         column: x => x.DeckId,
                         principalTable: "Decks",
-                        principalColumn: "DeckId",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -52,19 +55,21 @@ namespace FlashCards.Context.Migrations
                 name: "Reviews",
                 columns: table => new
                 {
-                    ReviewId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     ReviewDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Rating = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    FlashCardId = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                    FlashCardId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
+                    LastUpdated = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Reviews", x => x.ReviewId);
+                    table.PrimaryKey("PK_Reviews", x => x.Id);
                     table.ForeignKey(
                         name: "FK_Reviews_FlashCards_FlashCardId",
                         column: x => x.FlashCardId,
                         principalTable: "FlashCards",
-                        principalColumn: "FlashCardId",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 

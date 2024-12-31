@@ -24,7 +24,7 @@ namespace FlashCards.Context.Migrations
 
             modelBuilder.Entity("FlashCards.Models.Deck", b =>
                 {
-                    b.Property<Guid>("DeckId")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
@@ -42,14 +42,14 @@ namespace FlashCards.Context.Migrations
                     b.Property<DateTime>("LastUpdated")
                         .HasColumnType("datetime2");
 
-                    b.HasKey("DeckId");
+                    b.HasKey("Id");
 
                     b.ToTable("Decks");
                 });
 
             modelBuilder.Entity("FlashCards.Models.FlashCard", b =>
                 {
-                    b.Property<Guid>("FlashCardId")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
@@ -80,7 +80,7 @@ namespace FlashCards.Context.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("FlashCardId");
+                    b.HasKey("Id");
 
                     b.HasIndex("DeckId");
 
@@ -89,7 +89,7 @@ namespace FlashCards.Context.Migrations
 
             modelBuilder.Entity("FlashCards.Models.Review", b =>
                 {
-                    b.Property<Guid>("ReviewId")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
@@ -109,7 +109,7 @@ namespace FlashCards.Context.Migrations
                     b.Property<DateTime>("ReviewDate")
                         .HasColumnType("datetime2");
 
-                    b.HasKey("ReviewId");
+                    b.HasKey("Id");
 
                     b.HasIndex("FlashCardId");
 
