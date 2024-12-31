@@ -1,0 +1,54 @@
+<mat-sidenav-container class="example-container">
+  <mat-sidenav
+    #sidenav
+    mode="over"
+    [fixedInViewport]="true"
+    [fixedTopGap]="0"
+    [fixedBottomGap]="0"
+    hasBackdrop="true"
+  >
+    <div class="grid gird-cols-1 gap-4 p-4">
+      <div class="flex w-full gap-2 justify-between">
+        <div class="flex items-center">
+          <mat-icon class="icon-brand">style</mat-icon>
+          <mat-label class="mx-5">Flash Cards</mat-label>
+        </div>
+        <mat-icon
+          (click)="sidenav.toggle()"
+          class="cursor-pointer"
+          color="primary"
+        >
+          close
+        </mat-icon>
+      </div>
+      <button mat-stroked-button>
+        <mat-icon>account_circle</mat-icon>
+        Login / Register
+      </button>
+    </div>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar
+      class="shadow-lg border-b border-gray-400 fixed w-full top-0 z-50"
+    >
+      <div class="flex justify-between w-full h-20 items-center">
+        <div class="flex gap-2">
+          <mat-icon class="icon-brand">style</mat-icon>
+          <mat-label class="mx-5">Flash Cards</mat-label>
+        </div>
+        <div class="flex gap-2 items-center">
+          <mat-slide-toggle
+            [checked]="isDarkTheme"
+            (change)="onThemeChange($event)"
+          ></mat-slide-toggle>
+          <mat-icon class="icon-brand" (click)="sidenav.toggle()">
+            menu
+          </mat-icon>
+        </div>
+      </div>
+    </mat-toolbar>
+    <div class="px-4 m-5">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
