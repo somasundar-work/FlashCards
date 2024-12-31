@@ -2,7 +2,7 @@
 
 namespace FlashCards.Models
 {
-    public class FlashCard
+    public class FlashCard: BaseEntity
     {
         [Key]
         public Guid FlashCardId { get; set; }
