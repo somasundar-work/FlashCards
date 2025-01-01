@@ -8,7 +8,8 @@ import {
   MatSlideToggleChange,
   MatSlideToggleModule,
 } from '@angular/material/slide-toggle';
-import { RouterOutlet } from '@angular/router';
+import { MatListModule } from '@angular/material/list';
+import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'FlashCards-header',
@@ -20,6 +21,9 @@ import { RouterOutlet } from '@angular/router';
     MatSidenavModule,
     MatSlideToggleModule,
     RouterOutlet,
+    MatListModule,
+    RouterLink,
+    RouterLinkActive,
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',

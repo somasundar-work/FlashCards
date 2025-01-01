@@ -18,7 +18,9 @@
 .custom-theme {
   @include mat.theme(
     (
-      color: mat.$azure-palette,
+      // color: mat.$orange-palette,
+      // color: mat.$rose-palette
+      color: mat.$magenta-palette
     )
   );
   //override button theme

@@ -21,30 +21,76 @@
           close
         </mat-icon>
       </div>
-      <button mat-stroked-button>
+      <button mat-flat-button class="mt-4">
         <mat-icon>account_circle</mat-icon>
         Login / Register
       </button>
+      <mat-list class="grid grid-cols-1">
+        <mat-list-item class="flex gap-4 items-center">
+          <div
+            class="flex gap-4 items-center w-full cursor-pointer"
+            (click)="sidenav.toggle()"
+            routerLink="/"
+            routerLinkActive="custom-active-link"
+            [routerLinkActiveOptions]="{ exact: true }"
+          >
+            <mat-icon>home</mat-icon>
+            <mat-label>Home</mat-label>
+          </div>
+        </mat-list-item>
+        <mat-list-item class="flex gap-4 items-center">
+          <div
+            class="flex gap-4 items-center w-full cursor-pointer"
+            (click)="sidenav.toggle()"
+            routerLink="/decks"
+            routerLinkActive="custom-active-link"
+          >
+            <mat-icon>web_stories</mat-icon>
+            <mat-label>Decks</mat-label>
+          </div>
+        </mat-list-item>
+        <mat-list-item class="flex gap-4 items-center">
+          <div
+            class="flex gap-4 items-center w-full cursor-pointer"
+            (click)="sidenav.toggle()"
+            routerLink="/reviews"
+            routerLinkActive="custom-active-link"
+          >
+            <mat-icon>score</mat-icon>
+            <mat-label>Review Analysis</mat-label>
+          </div>
+        </mat-list-item>
+        <mat-list-item class="flex gap-4 items-center">
+          <div
+            class="flex gap-4 items-center w-full cursor-pointer"
+            routerLink="/settings"
+            routerLinkActive="custom-active-link"
+            (click)="sidenav.toggle()"
+          >
+            <mat-icon>settings</mat-icon>
+            <mat-label>Settings</mat-label>
+          </div>
+        </mat-list-item>
+      </mat-list>
     </div>
   </mat-sidenav>
   <mat-sidenav-content>
     <mat-toolbar
-      class="shadow-lg border-b border-gray-400 fixed w-full top-0 z-50"
+      class="shadow-lg border-b border-gray-400 fixed w-full top-0 z-50 custom-color"
     >
       <div class="flex justify-between w-full h-20 items-center">
-        <div class="flex gap-2">
+        <mat-icon class="icon-brand" (click)="sidenav.toggle()">
+          menu
+        </mat-icon>
+        <div class="flex gap-4">
           <mat-icon class="icon-brand">style</mat-icon>
-          <mat-label class="mx-5">Flash Cards</mat-label>
+          <mat-label>Flash Cards</mat-label>
         </div>
-        <div class="flex gap-2 items-center">
-          <mat-slide-toggle
-            [checked]="isDarkTheme"
-            (change)="onThemeChange($event)"
-          ></mat-slide-toggle>
-          <mat-icon class="icon-brand" (click)="sidenav.toggle()">
-            menu
-          </mat-icon>
-        </div>
+        <mat-slide-toggle
+          [checked]="isDarkTheme"
+          (change)="onThemeChange($event)"
+        >
+        </mat-slide-toggle>
       </div>
     </mat-toolbar>
     <div class="px-4 m-5">
