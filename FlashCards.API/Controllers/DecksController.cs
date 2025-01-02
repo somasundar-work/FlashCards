@@ -1,6 +1,7 @@
 using FlashCards.API.RequestHelpers;
 using FlashCards.Application.Interfaces;
 using FlashCards.Application.Specification;
+using FlashCards.Application.Specification.Params;
 using FlashCards.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;

@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FlashCards.Models
 {
-    public class FlashCard: BaseEntity
+    public class Card : BaseEntity
     {
         [ForeignKey("DeckId")]
         public Guid DeckId { get; set; }
@@ -14,9 +14,9 @@ namespace FlashCards.Models
 
         public DateTime LastReviewed { get; set; }
 
-        public int Interval { get; set; }  // Spaced repetition interval
+        public int Interval { get; set; } // Spaced repetition interval
 
-        public RatingStatus EaseFactor { get; set; }  // Difficulty factor for SRS
+        public RatingStatus EaseFactor { get; set; } // Difficulty factor for SRS
 
         public ICollection<Review> Reviews { get; set; } = [];
     }
