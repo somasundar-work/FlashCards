@@ -35,8 +35,11 @@ namespace FlashCards.Context.Migrations
                     Question = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Answer = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     LastReviewed = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    LastStatus = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ReviewCount = table.Column<int>(type: "int", nullable: false),
+                    EaseFactor = table.Column<double>(type: "float", nullable: false),
                     Interval = table.Column<int>(type: "int", nullable: false),
-                    EaseFactor = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    NextReviewDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
                     LastUpdated = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },

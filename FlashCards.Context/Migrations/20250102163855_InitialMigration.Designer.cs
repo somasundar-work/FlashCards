@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FlashCards.Context.Migrations
 {
     [DbContext(typeof(FlashCardsContext))]
-    [Migration("20250102160629_InitialMigration")]
+    [Migration("20250102163855_InitialMigration")]
     partial class InitialMigration
     {
         /// <inheritdoc />
@@ -38,9 +38,8 @@ namespace FlashCards.Context.Migrations
                     b.Property<Guid>("DeckId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("EaseFactor")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<double>("EaseFactor")
+                        .HasColumnType("float");
 
                     b.Property<int>("Interval")
                         .HasColumnType("int");
@@ -51,12 +50,22 @@ namespace FlashCards.Context.Migrations
                     b.Property<DateTime>("LastReviewed")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("LastStatus")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("LastUpdated")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("NextReviewDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Question")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ReviewCount")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 

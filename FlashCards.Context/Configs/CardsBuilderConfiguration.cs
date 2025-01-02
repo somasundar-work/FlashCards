@@ -11,7 +11,7 @@ namespace FlashCards.Context.Configs
         {
             builder.HasMany(x => x.Reviews).WithOne().OnDelete(DeleteBehavior.Cascade);
             builder
-                .Property(x => x.EaseFactor)
+                .Property(x => x.LastStatus)
                 .HasConversion(
                     o => o.ToString(),
                     o => (RatingStatus)Enum.Parse(typeof(RatingStatus), o)

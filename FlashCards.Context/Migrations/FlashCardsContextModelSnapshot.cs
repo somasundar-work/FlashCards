@@ -35,9 +35,8 @@ namespace FlashCards.Context.Migrations
                     b.Property<Guid>("DeckId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("EaseFactor")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<double>("EaseFactor")
+                        .HasColumnType("float");
 
                     b.Property<int>("Interval")
                         .HasColumnType("int");
@@ -48,12 +47,22 @@ namespace FlashCards.Context.Migrations
                     b.Property<DateTime>("LastReviewed")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("LastStatus")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("LastUpdated")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("NextReviewDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Question")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ReviewCount")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
