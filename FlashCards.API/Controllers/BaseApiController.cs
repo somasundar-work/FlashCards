@@ -9,7 +9,7 @@ namespace FlashCards.API.Controllers
     [Route("api/[controller]")]
     public class BaseApiController : ControllerBase
     {
-        protected async Task<ActionResult<Pagination<T>>> CreatePagedResult<T>(
+        protected async Task<IActionResult> CreatePagedResult<T>(
             IGenericRepository<T> repo,
             ISpecification<T> spec,
             int pageIndex,

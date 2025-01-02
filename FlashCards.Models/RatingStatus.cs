@@ -8,9 +8,9 @@ namespace FlashCards.Models
 {
     public enum RatingStatus
     {
-        Forgot,
-        Hard,
-        Medium,
-        Easy,
+        Forgot = 1,
+        Hard = 2,
+        Good = 3,
+        Easy = 4,
     }
 }

@@ -14,6 +14,15 @@ public class DecksSpecification : BaseSpecification<Deck>
             )
         )
     {
+        switch (specParams.Sort)
+        {
+            case "nameDesc":
+                AddOrderByDescending(p => p.DeckName);
+                break;
+            default:
+                AddOrderBy(p => p.DeckName);
+                break;
+        }
         ApplyPaging(specParams.PageSize * (specParams.PageIndex - 1), specParams.PageSize);
     }
 }

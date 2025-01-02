@@ -15,13 +15,11 @@ namespace FlashCards.API.Controllers
             var spec = new CardsSpecification(specParams);
             if (spec == null)
                 return BadRequest("Invalid search criteria");
-            return Ok(
-                await CreatePagedResult(
-                    unit.Repository<Card>(),
-                    spec,
-                    specParams.PageIndex,
-                    specParams.PageSize
-                )
+            return await CreatePagedResult(
+                unit.Repository<Card>(),
+                spec,
+                specParams.PageIndex,
+                specParams.PageSize
             );
         }
 

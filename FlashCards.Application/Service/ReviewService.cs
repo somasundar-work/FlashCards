@@ -7,24 +7,22 @@ public class ReviewService
 {
     public void GetReview(Card card, RatingStatus rating)
     {
-        card.EaseFactor += 0.1 - (5 - (int)rating) * (0.08 + (5 - (int)rating) * 0.02);
-        if (card.EaseFactor < 1.3)
-            card.EaseFactor = 1.3;
-
-        if ((int)rating < 3)
+        // card.EaseFactor += 0.1 - (5 - (int)rating) * (0.08 + (5 - (int)rating) * 0.02);
+        card.EaseFactor = rating switch
         {
-            card.Interval = 1;
-        }
-        else
+            RatingStatus.Forgot => Math.Max(1.3, card.EaseFactor - 0.2),
+            RatingStatus.Easy => card.EaseFactor += 0.15,
+            _ => card.EaseFactor,
+        };
+        card.Interval = rating switch
         {
-            card.Interval = card.ReviewCount switch
-            {
-                0 => 1,
-                1 => 6,
-                _ => (int)(card.Interval * card.EaseFactor),
-            };
-            card.ReviewCount++;
-        }
+            RatingStatus.Forgot => 1,
+            RatingStatus.Hard => (int)(card.Interval * 1.12),
+            RatingStatus.Good => (int)(card.Interval * card.EaseFactor),
+            RatingStatus.Easy => (int)(card.Interval * card.EaseFactor * 1.13),
+            _ => throw new ArgumentOutOfRangeException("rating out of range"),
+        };
         card.NextReviewDate = DateTime.UtcNow.AddDays(card.Interval);
+        card.ReviewCount++;
     }
 }

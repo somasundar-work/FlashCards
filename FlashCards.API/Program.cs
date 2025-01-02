@@ -27,7 +27,12 @@ app.UseCors(x =>
     x.AllowAnyHeader()
         .AllowAnyMethod()
         .AllowCredentials()
-        .WithOrigins("http://localhost:5119", "https://localhost:7249", "http://localhost:4200")
+        .WithOrigins(
+            "http://localhost:5270",
+            "https://localhost:7287",
+            "http://localhost:4200",
+            "https://localhost:4200"
+        )
 );
 
 // Configure the HTTP request pipeline.

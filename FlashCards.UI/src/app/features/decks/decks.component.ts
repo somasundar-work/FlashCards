@@ -1,6 +1,10 @@
-import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, inject, ViewChild } from '@angular/core';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
+import { DecksService } from '../../core/services/decks/decks.service';
+import { Deck } from '../../shared/models/Deck';
+import { DeckParams } from '../../shared/models/deckParams';
+import { Pagination } from '../../shared/models/pagination';
 
 @Component({
   selector: 'FlashCards-decks',
@@ -9,10 +13,36 @@ import { MatTableDataSource, MatTableModule } from '@angular/material/table';
   styleUrl: './decks.component.scss',
 })
 export class DecksComponent implements AfterViewInit {
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
+  private deckService = inject(DecksService);
+  displayedColumns: string[] = ['deckName', 'description'];
+  dataSource = new MatTableDataSource<Deck>();
 
+  decks?: Pagination<Deck>;
+  sortOptions = [
+    { value: 'name', display: 'Name Asc' },
+    { value: 'nameDesc', display: 'Name Desc' },
+  ];
+  deckParams: DeckParams = new DeckParams();
+  pageSizeOptions = [5, 10, 15, 20, 25];
   @ViewChild(MatPaginator) paginator: MatPaginator | undefined;
+
+  ngOnInit(): void {
+    this.initializeDeck();
+  }
+
+  initializeDeck() {
+    this.getDecks();
+  }
+
+  getDecks() {
+    this.deckService.getDecks(this.deckParams).subscribe({
+      next: (response) => {
+        this.decks = response;
+        this.dataSource = new MatTableDataSource<Deck>(response.data);
+      },
+      error: (error) => console.log(error),
+    });
+  }
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator!;

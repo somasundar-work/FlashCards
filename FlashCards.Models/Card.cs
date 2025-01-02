@@ -18,7 +18,7 @@ namespace FlashCards.Models
 
         public int ReviewCount { get; set; } = 0;
 
-        public double EaseFactor { get; set; } = 2.5;
+        public double EaseFactor { get; set; } = 1.3;
 
         public int Interval { get; set; } = 1;
 
