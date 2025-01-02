@@ -14,9 +14,15 @@ namespace FlashCards.Models
 
         public DateTime LastReviewed { get; set; }
 
-        public int Interval { get; set; } // Spaced repetition interval
+        public RatingStatus LastStatus { get; set; }
 
-        public RatingStatus EaseFactor { get; set; } // Difficulty factor for SRS
+        public int ReviewCount { get; set; } = 0;
+
+        public double EaseFactor { get; set; } = 2.5;
+
+        public int Interval { get; set; } = 1;
+
+        public DateTime NextReviewDate { get; set; }
 
         public ICollection<Review> Reviews { get; set; } = [];
     }

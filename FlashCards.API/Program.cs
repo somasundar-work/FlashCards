@@ -1,5 +1,6 @@
 using FlashCards.Application.Interfaces;
 using FlashCards.Application.Repository;
+using FlashCards.Application.Service;
 using FlashCards.Context.Context;
 using Microsoft.EntityFrameworkCore;
 
@@ -10,7 +11,7 @@ builder.Services.AddDbContext<FlashCardsContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
-
+builder.Services.AddSingleton<ReviewService>();
 builder.Services.AddControllers();
 builder.Services.AddCors();
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));

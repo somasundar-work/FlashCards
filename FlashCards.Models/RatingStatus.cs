@@ -11,6 +11,6 @@ namespace FlashCards.Models
         Forgot,
         Hard,
         Medium,
-        Easy
+        Easy,
     }
 }
