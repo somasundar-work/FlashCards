@@ -1,0 +1,20 @@
+.mat-mdc-row .mat-mdc-cell {
+  border-bottom: 1px transparent;
+  border-top: 1px transparent;
+  border-color: var(--mat-sys-primary);
+  cursor: pointer;
+}
+
+.mat-mdc-header-row {
+  background: var(--mat-sys-primary-container);
+  color: var(--mat-sys-primary);
+}
+
+.mat-mdc-row:hover .mat-mdc-cell {
+  border-color: var(--mat-sys-primary-container);
+  background: var(--mat-sys-primary-container);
+}
+
+.demo-row-is-clicked {
+  font-weight: bold;
+}
